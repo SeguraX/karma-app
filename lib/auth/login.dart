@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/auth/register.dart';
 
-import 'home_page.dart';
+import '../screens/home_page.dart';
 import 'package:flutter/services.dart';
 
 class Login extends StatelessWidget {
@@ -169,20 +170,28 @@ class MainPage extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Text(
+                  children: <Widget>[
+                    const Text(
                       "DON'T HAVE AN ACCOUNT ? ",
                       style: TextStyle(
                           fontSize: 11,
                           color: Colors.grey,
                           fontWeight: FontWeight.w500),
                     ),
-                    Text(
-                      " SIGN UP",
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Color.fromRGBO(0, 121, 107, 100),
-                          fontWeight: FontWeight.w700),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const Register()));
+                      },
+                      child: const Text(
+                        " SIGN UP",
+                        style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w700),
+                      ),
                     )
                   ],
                 )
