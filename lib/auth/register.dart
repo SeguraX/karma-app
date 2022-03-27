@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/auth/login.dart';
@@ -127,6 +129,9 @@ class MainPage extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   margin: const EdgeInsets.fromLTRB(20, 0, 20, 30),
                   child: Row(
@@ -172,30 +177,33 @@ class MainPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      "Already HAVE AN ACCOUNT ? ",
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const Login()));
-                      },
-                      child: const Text(
-                        " SIGN IN",
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 50, horizontal: 74),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        "Already HAVE AN ACCOUNT? ",
                         style: TextStyle(
                             fontSize: 11,
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w700),
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w500),
                       ),
-                    )
-                  ],
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => const Login()));
+                        },
+                        child: const Text(
+                          "SIGN IN",
+                          style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

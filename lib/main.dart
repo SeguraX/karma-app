@@ -16,16 +16,10 @@ class Home extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: AnimatedSplashScreen(
-        splash: Container(
-          child: Center(
-            child: Text("SeguraX",
-                style: GoogleFonts.pacifico(fontSize: 20, color: Colors.white)),
-          ),
-          width: 400,
-          height: 400,
-          decoration: BoxDecoration(
-              shape: BoxShape.circle, color: Colors.teal.shade600),
-        ),
+        backgroundColor: Colors.teal.shade700,
+        splash: Text("SeguraX",
+            textAlign: TextAlign.center,
+            style: GoogleFonts.pacifico(fontSize: 40, color: Colors.white)),
         nextScreen: Login(),
       ),
     );

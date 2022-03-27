@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/auth/register.dart';
@@ -168,32 +170,35 @@ class MainPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      "DON'T HAVE AN ACCOUNT ? ",
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const Register()));
-                      },
-                      child: const Text(
-                        " SIGN UP",
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 110, horizontal: 74),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "DON'T HAVE AN ACCOUNT?",
                         style: TextStyle(
                             fontSize: 11,
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w700),
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w500),
                       ),
-                    )
-                  ],
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const Register()));
+                        },
+                        child: const Text(
+                          "SIGN UP",
+                          style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
