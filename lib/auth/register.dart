@@ -1,11 +1,14 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/auth/login.dart';
 
-import 'home_page.dart';
+import '../screens/home_page.dart';
 import 'package:flutter/services.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class Register extends StatelessWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +89,19 @@ class MainPage extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                             icon: Icon(
+                              Icons.person,
+                              color: Colors.teal[600],
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade100)),
+                            labelText: "Name",
+                            enabledBorder: InputBorder.none,
+                            labelStyle: const TextStyle(color: Colors.grey,fontSize: 20)),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                            icon: Icon(
                               Icons.email,
                               color: Colors.teal[600],
                             ),
@@ -94,7 +110,7 @@ class MainPage extends StatelessWidget {
                                     BorderSide(color: Colors.grey.shade100)),
                             labelText: "Email",
                             enabledBorder: InputBorder.none,
-                            labelStyle: const TextStyle(color: Colors.grey)),
+                            labelStyle: const TextStyle(color: Colors.grey,fontSize: 20)),
                       ),
                       TextField(
                         obscureText: true,
@@ -108,22 +124,14 @@ class MainPage extends StatelessWidget {
                                     BorderSide(color: Colors.grey.shade100)),
                             labelText: "Password",
                             enabledBorder: InputBorder.none,
-                            labelStyle: const TextStyle(color: Colors.grey)),
+                            labelStyle: const TextStyle(color: Colors.grey,fontSize: 20)),
                       )
                     ],
                   ),
                 ),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),
-                        child: Text(
-                          "FORGOT PASSWORD?",
-                          style:
-                              TextStyle(color: Colors.teal[600], fontSize: 11),
-                        ))),
+                SizedBox(height: 20,),
                 Container(
-                  margin: const EdgeInsets.fromLTRB(20, 0, 20, 30),
+                  margin: const EdgeInsets.fromLTRB(90, 0, 0, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -145,8 +153,8 @@ class MainPage extends StatelessWidget {
                               },
                               child: const Center(
                                 child: Text(
-                                  "SIGN IN",
-                                  style: TextStyle(
+                                  "SIGN UP",
+                                  style: TextStyle(fontSize: 18,
                                       color: Colors.white,
                                       fontWeight: FontWeight.w700),
                                 ),
@@ -169,20 +177,26 @@ class MainPage extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Text(
-                      "DON'T HAVE AN ACCOUNT ? ",
+                  children: <Widget>[
+                    const Text(
+                      "Already HAVE AN ACCOUNT ?",
                       style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 13,
                           color: Colors.grey,
                           fontWeight: FontWeight.w500),
                     ),
-                    Text(
-                      " SIGN UP",
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Color.fromRGBO(0, 121, 107, 100),
-                          fontWeight: FontWeight.w700),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const Login()));
+                      },
+                      child: const Text(
+                        "SIGN IN",
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w700),
+                      ),
                     )
                   ],
                 )
