@@ -188,7 +188,7 @@ class MainPage extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const Login()));
+                            MaterialPageRoute(builder: (_) => const LoginPage()));
                       },
                       child: const Text(
                         "SIGN IN",

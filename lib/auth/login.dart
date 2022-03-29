@@ -1,29 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/auth/register.dart';
 
-import '../screens/home_page.dart';
-import 'package:flutter/services.dart';
-
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MainPage(),
-    );
-  }
-}
-
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
-
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
   double getSmallDiameter(BuildContext context) =>
       MediaQuery.of(context).size.width * 2 / 3;
   double getBiglDiameter(BuildContext context) =>
@@ -73,145 +54,14 @@ class MainPage extends StatelessWidget {
                   shape: BoxShape.circle, color: Color(0xFFF3E9EE)),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: ListView(
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      //border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(10)),
-                  margin: const EdgeInsets.fromLTRB(20, 300, 20, 10),
-                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 25),
-                  child: Column(
-                    children: <Widget>[
-                      TextField(
-                        decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.email,
-                              color: Colors.teal[600],
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey.shade100)),
-                            labelText: "Email",
-                            enabledBorder: InputBorder.none,
-                            labelStyle: const TextStyle(
-                                color: Colors.grey, fontSize: 20)),
-                      ),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.vpn_key,
-                              color: Colors.teal[600],
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey.shade100)),
-                            labelText: "Password",
-                            enabledBorder: InputBorder.none,
-                            labelStyle: const TextStyle(
-                                color: Colors.grey, fontSize: 20)),
-                      )
-                    ],
-                  ),
-                ),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),
-                        child: Text(
-                          "FORGOT PASSWORD?",
-                          style: TextStyle(
-                            color: Colors.teal[600],
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ))),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  margin: const EdgeInsets.fromLTRB(80, 0, 20, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        height: 40,
-                        child: Container(
-                          child: Material(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.transparent,
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(20),
-                              splashColor: Colors.amber,
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const HomePage()));
-                              },
-                              child: const Center(
-                                child: Text(
-                                  "SIGN IN",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 18),
-                                ),
-                              ),
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              gradient: const LinearGradient(
-                                  colors: [
-                                    Color.fromRGBO(0, 121, 107, 100),
-                                    Color.fromRGBO(0, 137, 123, 100)
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      "DON'T HAVE AN ACCOUNT ?",
-                      style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const Register()));
-                      },
-                      child: const Text(
-                        "SIGN UP",
-                        style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w700),
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
+          Column(
+            children: [
+              TextField()
+            ],
           )
         ],
       ),
+      
     );
   }
 }
