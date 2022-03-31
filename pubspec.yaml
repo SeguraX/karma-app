@@ -63,6 +63,7 @@ flutter:
   assets:
     - assests/images/flutter.png
     - assests/images/SeguraXx.png
+    - assests/images/screen.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

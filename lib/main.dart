@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'auth/login.dart';
 
@@ -18,8 +19,8 @@ class Home extends StatelessWidget {
         splash: SizedBox(
           child: Text(
             'SeguraX',
-            style: TextStyle(
-                fontSize: 50, fontWeight: FontWeight.bold, color: Colors.teal[600]),
+            style: GoogleFonts.pacifico(
+                fontSize: 55, fontWeight: FontWeight.bold, color: Colors.teal[600]),
           ),
         ),
         nextScreen: LoginPage(),
