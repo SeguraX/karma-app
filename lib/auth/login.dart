@@ -1,204 +1,168 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/auth/register.dart';
+import 'package:myapp/screens/background.dart';
 
-import '../screens/home_page.dart';
-import 'package:flutter/services.dart';
-
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MainPage(),
-    );
-  }
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
-
-  double getSmallDiameter(BuildContext context) =>
-      MediaQuery.of(context).size.width * 2 / 3;
-  double getBiglDiameter(BuildContext context) =>
-      MediaQuery.of(context).size.width * 7 / 8;
+class _LoginPageState extends State<LoginPage> {
+  late TextEditingController textController;
+  late TextEditingController textController2;
+  late bool passwordVisibility;
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController();
+    textController2 = TextEditingController();
+    passwordVisibility = false;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFEEEEEE),
-      body: Stack(
-        children: <Widget>[
-          Positioned(
-            right: -getSmallDiameter(context) / 3,
-            top: -getSmallDiameter(context) / 3,
-            child: Container(
-              width: getSmallDiameter(context),
-              height: getSmallDiameter(context),
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.teal.shade600),
-            ),
-          ),
-          Positioned(
-            left: -getBiglDiameter(context) / 5,
-            top: -getBiglDiameter(context) / 4,
-            child: Container(
-              alignment: Alignment.topCenter,
-              child: Center(
-                child: Text("SeguraX",
-                    style: GoogleFonts.pacifico(
-                        fontSize: 40, color: Colors.white)),
+    return Background(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 2.5,
               ),
-              width: getBiglDiameter(context),
-              height: getBiglDiameter(context),
-              decoration: BoxDecoration(
-                color: Colors.teal.shade700,
-                shape: BoxShape.circle,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
+                child: TextFormField(
+                  controller: textController,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                      hintText: 'Email..',
+                      hintStyle: GoogleFonts.roboto(color: Colors.black38),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      filled: true,
+                      fillColor: Colors.teal[100],
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        //borderSide: BorderSide(color: Colors.black, width: 1.0),
+                      ),
+                      prefixIcon: Icon(
+                        Icons.email_outlined,
+                        color: Colors.black,
+                      )),
+                  style: GoogleFonts.roboto(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
               ),
-            ),
-          ),
-          Positioned(
-            right: -getBiglDiameter(context) / 2,
-            bottom: -getBiglDiameter(context) / 2,
-            child: Container(
-              width: getBiglDiameter(context),
-              height: getBiglDiameter(context),
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle, color: Color(0xFFF3E9EE)),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: ListView(
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      //border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(10)),
-                  margin: const EdgeInsets.fromLTRB(20, 300, 20, 10),
-                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 25),
-                  child: Column(
-                    children: <Widget>[
-                      TextField(
-                        decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.email,
-                              color: Colors.teal[600],
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey.shade100)),
-                            labelText: "Email",
-                            enabledBorder: InputBorder.none,
-                            labelStyle: const TextStyle(color: Colors.grey)),
-                      ),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.vpn_key,
-                              color: Colors.teal[600],
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey.shade100)),
-                            labelText: "Password",
-                            enabledBorder: InputBorder.none,
-                            labelStyle: const TextStyle(color: Colors.grey)),
-                      )
-                    ],
-                  ),
-                ),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),
-                        child: Text(
-                          "FORGOT PASSWORD?",
-                          style:
-                              TextStyle(color: Colors.teal[600], fontSize: 11),
-                        ))),
-                Container(
-                  margin: const EdgeInsets.fromLTRB(20, 0, 20, 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        height: 40,
-                        child: Container(
-                          child: Material(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.transparent,
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(20),
-                              splashColor: Colors.amber,
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const HomePage()));
-                              },
-                              child: const Center(
-                                child: Text(
-                                  "SIGN IN",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ),
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              gradient: const LinearGradient(
-                                  colors: [
-                                    Color.fromRGBO(0, 121, 107, 100),
-                                    Color.fromRGBO(0, 137, 123, 100)
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      "DON'T HAVE AN ACCOUNT ? ",
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w500),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(30, 30, 30, 0),
+                child: TextFormField(
+                  controller: textController2,
+                  obscureText: !passwordVisibility,
+                  decoration: InputDecoration(
+                    hintText: 'Password..',
+                    hintStyle: GoogleFonts.roboto(color: Colors.black38),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                    filled: true,
+                    fillColor: Colors.teal[100],
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.vpn_key_outlined,
+                      color: Colors.black,
+                    ),
+                    suffixIcon: InkWell(
+                        onTap: () => setState(
+                              () => passwordVisibility = !passwordVisibility,
+                            ),
+                        child: Icon(
+                          passwordVisibility
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: Colors.black,
+                          size: 22,
+                        )),
+                  ),
+                  style: GoogleFonts.roboto(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: Row(
+                  textDirection: TextDirection.rtl,
+                  children: [
                     TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const Register()));
-                      },
-                      child: const Text(
-                        " SIGN UP",
-                        style: TextStyle(
-                            fontSize: 11,
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w700),
-                      ),
-                    )
+                      onPressed: () {},
+                      child: Text('Forget your password?',
+                          style: GoogleFonts.roboto(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 15,
+                              decoration: TextDecoration.underline)),
+                    ),
                   ],
-                )
-              ],
-            ),
-          )
-        ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: ElevatedButton(
+                  onPressed: () {
+                  },
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(
+                      color: Color(0xffffffff),
+                      fontWeight: FontWeight.w800,
+                      fontSize: 25,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    elevation: 10,
+                    primary: Colors.teal[600],
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.1,
+                        vertical: MediaQuery.of(context).size.height * 0.012),
+                  ),
+                ),
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Dont have an account?'),
+                  TextButton(
+                    onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterPage()),
+                  );},
+                    child: Text('Sign Up',
+                        style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                            decoration: TextDecoration.underline)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
