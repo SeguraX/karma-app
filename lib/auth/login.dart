@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/auth/register.dart';
 import 'package:myapp/screens/background.dart';
+import 'package:myapp/screens/bottombar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -122,6 +123,8 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: ElevatedButton(
                   onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => BottomBar()));
                   },
                   child: Text(
                     'Sign In',
@@ -143,15 +146,17 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Dont have an account?'),
                   TextButton(
                     onPressed: () {
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => RegisterPage()),
-                  );},
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RegisterPage()),
+                      );
+                    },
                     child: Text('Sign Up',
                         style: GoogleFonts.roboto(
                             fontWeight: FontWeight.w700,
